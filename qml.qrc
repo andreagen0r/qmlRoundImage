@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>RoundImage.qml</file>
+        <file>shaders/roundImage.frag</file>
+        <file>shaders/roundImage.frag.qsb</file>
+        <file>shaders/roundImage.vert</file>
+        <file>shaders/roundImage.vert.qsb</file>
+        <file>image/mahdi-bafande-qgJ1rt7TeeY-unsplash.jpg</file>
+    </qresource>
+</RCC>
