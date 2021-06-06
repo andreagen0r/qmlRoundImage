@@ -6,7 +6,7 @@ Window {
     width: 640
     height: 580
     visible: true
-    title: qsTr("Photo by Mahdi Bafande on Unsplash")
+    title: qsTr("Round Image")
 
     Rectangle {
         anchors.fill: parent
