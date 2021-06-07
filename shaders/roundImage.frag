@@ -14,6 +14,6 @@ void main() {
     float alpha = smoothstep( mix(clamp(edge, 0.0, 1.0), 0.0, 0.5) - delta, 0.5, dist );
 
     vec4 tex = texture(src, coord);
-    fragColor = mix( tex, vec4(0.0), alpha );
+    fragColor = mix( tex, vec4(0.0), alpha ) * qt_Opacity;
 }
 
