@@ -1,20 +1,32 @@
 import QtQuick
-import QtQuick.Controls
+import QtQuick.Controls.Basic
 
-Item {
-    property alias source: image.source
-    property alias edge: effect.edge
+Control {
+  implicitWidth: 200
+  implicitHeight: 200
 
-    Image { id: image; visible: false }
+  property alias source: image.source
+  property alias radius: effect.radius
+  property alias topLeftRadius: effect.topLeftRadius
+  property alias topRightRadius: effect.topRightRadius
+  property alias bottomLeftRadius: effect.bottomLeftRadius
+  property alias bottomRightRadius: effect.bottomRightRadius
+  property alias softness: effect.softness
 
-    ShaderEffect {
-        id: effect
-        property variant src: image
-        property double edge: 1.0
+  Image { id: image; visible: false }
 
-        anchors.fill: parent
-        vertexShader: "qrc:/shaders/roundImage.vert.qsb"
-        fragmentShader: "qrc:/shaders/roundImage.frag.qsb"
-    }
+  ShaderEffect {
+    id: effect
+    property Image src: image
+    property real radius: 0
+    property real topLeftRadius: 0
+    property real topRightRadius: 0
+    property real bottomLeftRadius: 0
+    property real bottomRightRadius: 0
+    property real softness: 0
+
+    anchors.fill: parent
+    vertexShader: "qrc:/shaders/roundImage.vert.qsb"
+    fragmentShader: "qrc:/shaders/roundImage.frag.qsb"
+  }
 }
-

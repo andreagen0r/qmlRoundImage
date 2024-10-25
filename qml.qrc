@@ -1,6 +1,6 @@
 <RCC>
     <qresource prefix="/">
-        <file>main.qml</file>
+        <file>Main.qml</file>
         <file>RoundImage.qml</file>
         <file>shaders/roundImage.frag</file>
         <file>shaders/roundImage.frag.qsb</file>

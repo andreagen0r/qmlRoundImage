@@ -1,8 +1,9 @@
-cmake_minimum_required(VERSION 3.14)
+cmake_minimum_required(VERSION 3.16)
 
-project(RoundImage VERSION 0.1 LANGUAGES CXX)
-
-set(CMAKE_INCLUDE_CURRENT_DIR ON)
+project(ShaderSandbox
+    VERSION 0.2
+    LANGUAGES CXX
+)
 
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)
@@ -11,56 +12,32 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# QtCreator supports the following variables for Android, which are identical to qmake Android variables.
-# Check https://doc.qt.io/qt/deployment-android.html for more information.
-# They need to be set before the find_package(...) calls below.
+find_package(Qt6 6.8 COMPONENTS Quick Core Gui ShaderTools REQUIRED)
 
-#if(ANDROID)
-#    set(ANDROID_PACKAGE_SOURCE_DIR "${CMAKE_CURRENT_SOURCE_DIR}/android")
-#    if (ANDROID_ABI STREQUAL "armeabi-v7a")
-#        set(ANDROID_EXTRA_LIBS
-#            ${CMAKE_CURRENT_SOURCE_DIR}/path/to/libcrypto.so
-#            ${CMAKE_CURRENT_SOURCE_DIR}/path/to/libssl.so)
-#    endif()
-#endif()
-
-find_package(QT NAMES Qt6 Qt5 COMPONENTS Core Quick REQUIRED)
-find_package(Qt${QT_VERSION_MAJOR} COMPONENTS Core Quick REQUIRED)
-
-set(PROJECT_SOURCES
-        main.cpp
-        qml.qrc
+qt6_policy(
+    SET QTP0001 NEW
 )
 
-if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
-    qt_add_executable(RoundImage
-        MANUAL_FINALIZATION
-        ${PROJECT_SOURCES}
+qt_add_executable(ShaderSandbox
+    main.cpp
     )
-else()
-    if(ANDROID)
-        add_library(RoundImage SHARED
-            ${PROJECT_SOURCES}
-        )
-    else()
-        add_executable(RoundImage
-          ${PROJECT_SOURCES}
-        )
-    endif()
-endif()
 
-target_compile_definitions(RoundImage
-  PRIVATE $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:QT_QML_DEBUG>)
-target_link_libraries(RoundImage
-  PRIVATE Qt${QT_VERSION_MAJOR}::Core Qt${QT_VERSION_MAJOR}::Quick)
-
-set_target_properties(RoundImage PROPERTIES
-    MACOSX_BUNDLE_GUI_IDENTIFIER my.example.com
-    MACOSX_BUNDLE_BUNDLE_VERSION ${PROJECT_VERSION}
-    MACOSX_BUNDLE_SHORT_VERSION_STRING ${PROJECT_VERSION_MAJOR}.${PROJECT_VERSION_MINOR}
+qt_add_qml_module(ShaderSandbox
+    URI RoundImage
+    VERSION 1.0
+    RESOURCES
+        mahdi-bafande-qgJ1rt7TeeY-unsplash.jpg
+    QML_FILES
+        Main.qml
+        RoundImage.qml
 )
 
-if(QT_VERSION_MAJOR EQUAL 6)
-    qt_import_qml_plugins(RoundImage)
-    qt_finalize_executable(RoundImage)
-endif()
+qt6_add_shaders(ShaderSandbox "Shaders"
+    # PREFIX
+        # "/"
+    FILES
+        shaders/roundImage.frag
+        shaders/roundImage.vert
+)
+
+target_link_libraries(ShaderSandbox PRIVATE Qt::Quick Qt::Core)

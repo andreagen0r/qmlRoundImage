@@ -1,52 +1,117 @@
-# C++ objects and libs
-*.slo
-*.lo
+# Prerequisites
+###################
+*.d
+
+# Object files
+###################
 *.o
+*.ko
+*.obj
+*.elf
+*.lo
+*.slo
+
+# Linker output
+###################
+*.ilk
+*.map
+*.exp
+
+# Precompiled Headers
+###################
+*.gch
+*.pch
+
+# Libraries
+###################
+*.lib
 *.a
 *.la
+*.lo
 *.lai
 *.so
-*.so.*
+
+# Shared objects (inc. Windows DLLs)
+###################
 *.dll
+*.so
+*.so.*
 *.dylib
 
-# Qt-es
-object_script.*.Release
-object_script.*.Debug
-*_plugin_import.cpp
-/.qmake.cache
-/.qmake.stash
-*.pro.user
-*.pro.user.*
-*.qbs.user
-*.qbs.user.*
-*.moc
-moc_*.cpp
-moc_*.h
-qrc_*.cpp
-ui_*.h
-*.qmlc
-*.jsc
-Makefile*
-*build-*
-*.qm
-*.prl
+# Executables
+###################
+*.exe
+*.out
+*.app
+*.i*86
+*.x86_64
+*.hex
+*.bin
+bitglass
 
-# Qt unit tests
-target_wrapper.*
+# Debug files
+###################
+*.dSYM/
+*.su
+*.idb
+*.pdb
 
-# QtCreator
+# Temporary files #
+###################
+*.tmp
+*.dot
+*.bak
+*.rej
+
+# pdflatex files #
+##################
+*.aux
+*.toc
+*.out
+*.pdf
+
+# Backup files #
+################
+*~
+*.bkp
+
+# Folders #
+###########
+build/
+.cache/
+.vscode/
+docs/*.css
+
+# Packages #
+############
+*.7z
+*.gz
+*.zip
+*.iso
+*.rar
+*.tar
+
+# Logs/DB #
+###########
+*.log
+#*.sql
+*.sqlite
+
+# OS files #
+############
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ethumbs.db
+Thumbs.db
+
+# No Vagrant trash #
+####################
+.vagrant/
+
+# Project user file #
+####################
+*.user
 *.autosave
-
-# QtCreator Qml
-*.qmlproject.user
-*.qmlproject.user.*
-
-# QtCreator CMake
-CMakeLists.txt.user*
-
-# QtCreator 4.8< compilation database 
-compile_commands.json
-
-# QtCreator local machine specific files for imported projects
-*creator.user*
