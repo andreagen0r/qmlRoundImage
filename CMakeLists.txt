@@ -14,9 +14,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 find_package(Qt6 6.8 COMPONENTS Quick Core Gui ShaderTools REQUIRED)
 
-qt6_policy(
-    SET QTP0001 NEW
-)
+qt_standard_project_setup()
 
 qt_add_executable(ShaderSandbox
     main.cpp
@@ -33,8 +31,12 @@ qt_add_qml_module(ShaderSandbox
 )
 
 qt6_add_shaders(ShaderSandbox "Shaders"
-    # PREFIX
-        # "/"
+    GLSL "430"
+    HLSL 50
+    MSL 12
+    BATCHABLE
+    PRECOMPILE
+    OPTIMIZED
     FILES
         shaders/roundImage.frag
         shaders/roundImage.vert

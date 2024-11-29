@@ -24,7 +24,7 @@ ApplicationWindow {
         anchors.centerIn: parent
         width: size
         height: size
-        source: "qrc:/qt/qml/RoundImage/mahdi-bafande-qgJ1rt7TeeY-unsplash.jpg"
+        source: Qt.resolvedUrl( "/RoundImage/mahdi-bafande-qgJ1rt7TeeY-unsplash.jpg")
         radius: sRadius.value
         topLeftRadius: sTopLeft.value
         bottomLeftRadius: sBottomLeft.value
